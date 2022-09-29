@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - ProgramaStarter.UI</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/ProgramaStarter.UI.styles.css" asp-append-version="true" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+
+    <script src="https://kit.fontawesome.com/5379c1e9ee.js" crossorigin="anonymous"></script>
+
+</head>
+
+<body id="grid">
+    <header>
+        <div class="container-fluid">
+            <div class="row">
+                <button type="button" class="btn col-1">
+
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <aside class="wrapper">
+        <div id="sidebar">
+            <div role="button" id="sidebarCollapse" class="sidebar-header">
+                <h3>Programa Start</h3>
+                <strong>PS</strong>
+            </div>
+
+            <ul class="list-unstyled components" id="menu">
+                <li>
+                    <a href="#">
+                        <i class="fas fa-home"></i>
+                        Home
+                    </a>
+                </li>
+                <li>
+                    <a class="dropdown-toggle" data-bs-toggle="collapse" href="#programasSubmenu" role="button"
+                        aria-expanded="false" aria-controls="programasSubmenu">
+                        <i class="fa-solid fa-list-check"></i>
+                        Programas
+                    </a>
+                    <ul class="collapse list-unstyled" id="programasSubmenu" data-parent="menu">
+                        <li>
+                            <a asp-controller="ProgramaStart" asp-action="Index">Consultar</a>
+                        </li>
+                        <li>
+                            <a asp-controller="ProgramaStart" asp-action="Create">Cadastrar</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="dropdown-toggle" data-bs-toggle="collapse" href="#scrumSubmenu" role="button"
+                        aria-expanded="false" aria-controls="scrumSubmenu">
+                        <i class="fas fa-user"></i>
+                        Scrum Masters
+                    </a>
+                    <ul class="collapse list-unstyled" id="scrumSubmenu" data-parent="menu">
+                        <li>
+                            <a href="#">Consultar</a>
+                        </li>
+                        <li>
+                            <a href="#">Cadastrar</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="dropdown-toggle" data-bs-toggle="collapse" href="#starterSubmenu" role="button"
+                        aria-expanded="false" aria-controls="starterSubmenu">
+                        <i class="fas fa-users"></i>
+                        Starters
+                    </a>
+                    <ul class="collapse list-unstyled" id="starterSubmenu" data-parent="menu">
+                        <li>
+                            <a href="#">Consultar</a>
+                        </li>
+                        <li>
+                            <a href="#">Cadastrar</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="dropdown-toggle" data-bs-toggle="collapse" href="#groupSubmenu" role="button"
+                        aria-expanded="false" aria-controls="groupSubmenu">
+                        <i class="fa-solid fa-users-viewfinder"></i>
+                        Grupos
+                    </a>
+                    <ul class="collapse list-unstyled" id="groupSubmenu" data-parent="menu">
+                        <li>
+                            <a href="#">Consultar</a>
+                        </li>
+                        <li>
+                            <a href="#">Cadastrar</a>
+                        </li>
+                        <li>
+                            <a href="#">Gerenciar</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-regular fa-calendar"></i>
+                        Modulos
+                    </a>
+                </li>
+                <li>
+                    <a href="#">
+                        <i class="fa-solid fa-code"></i>
+                        Tecnologias
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </aside>
+
+    <main>
+        <div id="content">
+            @RenderBody()
+        </div>
+    </main>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+
+</html>
