@@ -20,9 +20,12 @@ public static class DependencyInjection
              options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"
             ), b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
 
+
         services.AddScoped<IRepository<ProgramaStart>, ProgramaStartRepository>();
+        services.AddScoped<IRepository<Modulo>, ModuloRepository>();
 
         services.AddScoped<IProgramaStartService, ProgramaStartService>();
+        services.AddScoped<IModuloService, ModuloService>();
 
         services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
 

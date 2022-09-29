@@ -1,0 +1,17 @@
+@model ProgramaStarter.Application.DTO.ModuloDTO
+
+<form asp-controller="Modulo" asp-action="Create" method="POST">
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label asp-for="Nome">Nome</label>
+      <input type="text" asp-for="Nome" class="form-control" placeholder="Nome">
+      <span asp-validation-for="Nome" class="text-danger"></span>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Confirmar</button>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -8,9 +8,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/ProgramaStarter.UI.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
-
-    <script src="https://kit.fontawesome.com/5379c1e9ee.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.12.1/css/jquery.dataTables.min.css" />
 
 </head>
 
@@ -103,10 +101,19 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#">
+                    <a class="dropdown-toggle" data-bs-toggle="collapse" href="#moduloSubmenu" role="button"
+                        aria-expanded="false" aria-controls="moduloSubmenu">
                         <i class="fa-regular fa-calendar"></i>
                         Modulos
                     </a>
+                    <ul class="collapse list-unstyled" id="moduloSubmenu" data-parent="menu">
+                        <li>
+                            <a asp-controller="Modulo" asp-action="Index">Consultar</a>
+                        </li>
+                        <li>
+                            <a asp-controller="Modulo" asp-action="Create">Cadastrar</a>
+                        </li>
+                    </ul>
                 </li>
                 <li>
                     <a href="#">
@@ -126,6 +133,7 @@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="https://kit.fontawesome.com/5379c1e9ee.js" crossorigin="anonymous"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @await RenderSectionAsync("Scripts", required: false)

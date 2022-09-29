@@ -8,6 +8,6 @@ public interface IProgramaStartService
     Task<IEnumerable<ProgramaStartDTO>> GetAsync();
     Task<ProgramaStartDTO> GetByIdAsync(int? id);
     Task AddAsync(ProgramaStartDTO programaStartDto);
-    Task UpdateAsync(ProgramaStartDTO programaStartcategoryDto);
+    Task UpdateAsync(ProgramaStartDTO programaStartDto);
     Task RemoveAsync(int? id);
 }

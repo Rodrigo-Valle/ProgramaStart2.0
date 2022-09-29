@@ -1,18 +1,4 @@
 @model IEnumerable<ProgramaStarter.Application.DTO.ProgramaStartDTO>
-    
-<script>
-    $(document).ready( function () {
-    $('#programas').DataTable({
-        "language": {
-            "lengthMenu": "Mostrar _MENU_ registros por paginas",
-            "zeroRecords": "Nada encontrado",
-            "info": "Mostrando a pagina _PAGE_ de _PAGES_",
-            "infoEmpty": "Nada a exibir",
-            "infoFiltered": "(filtrado de _MAX_ registros)"
-        }
-    });
-} );
-</script>
 
 <h1>Programas</h1>
 
@@ -41,7 +27,8 @@
         </tr>
     </thead>
     <tbody>
-        @foreach(var programa in Model) {
+        @foreach (var programa in Model)
+        {
             <tr>
                 <td>@programa.Id</td>
                 <td>@programa.Nome</td>
@@ -49,11 +36,13 @@
                 <td>@programa.DataFim.ToString("dd/MM/yyyy")</td>
 
                 <td>
-                    <button class="btn btn-secondary"><a asp-action="Edit" asp-route-id="@programa.Id" title="Edit">Editar</a></button> 
-                    <button class="btn btn-danger"><a asp-action="Delete" asp-route-id="@programa.Id" title="Delete">Excluir</a></button>
+                    <button class="btn btn-secondary"><a asp-action="Edit" asp-route-id="@programa.Id"
+                        title="Edit">Editar</a></button>
+                    <button class="btn btn-danger"><a asp-action="Delete" asp-route-id="@programa.Id"
+                        title="Delete">Excluir</a></button>
                 </td>
             </tr>
-        }    
+        }
     </tbody>
 
 </table>

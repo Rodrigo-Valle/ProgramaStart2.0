@@ -9,6 +9,7 @@ namespace ProgramaStarter.Application.Mappings
         public DomainToDTOMappingProfile()
         {
             CreateMap<ProgramaStart, ProgramaStartDTO>().ReverseMap();
+            CreateMap<Modulo, ModuloDTO>().ReverseMap();
         }
     }
 }
