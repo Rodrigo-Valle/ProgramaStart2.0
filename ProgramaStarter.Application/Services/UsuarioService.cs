@@ -9,19 +9,15 @@ namespace ProgramaStarter.Application.Services;
 public class UsuarioService : IUsuarioService
 {
     private IRepository<Usuario> _repository;
-    private readonly IAuthenticate _authenticate;
     private readonly IMapper _mapper;
-    public UsuarioService(IRepository<Usuario> repository, IMapper mapper, IAuthenticate authenticate )
+    public UsuarioService(IRepository<Usuario> repository, IMapper mapper)
     {
         _repository = repository;
         _mapper = mapper;
-        _authenticate = authenticate;
     }
     public async Task AddAsync(UsuarioDTO usuarioDto)
     {
-        string identityId = await _authenticate.RegisterUser(usuarioDto.Email, usuarioDto.Senha);
         var usuarioEntity = _mapper.Map<Usuario>(usuarioDto);
-        usuarioEntity.setIdentity(identityId);
         await _repository.CreateAsync(usuarioEntity);
     }
 

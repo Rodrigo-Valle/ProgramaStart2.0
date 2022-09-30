@@ -41,6 +41,24 @@ public class AuthenticateService : IAuthenticate
         return newId;
     }
 
+    public async Task UpdateUser(string id, string email)
+    {
+        var user = await _userManager.FindByIdAsync(id);
+        user.Email = email;
+        user.UserName = email;
+        user.NormalizedEmail = email.ToUpper();
+        user.NormalizedUserName = email.ToUpper();
+
+        var result = await _userManager.UpdateAsync(user);
+    }
+
+    public async Task RemoveUser(string id)
+    {
+        var user = await _userManager.FindByIdAsync(id);
+
+        var result = await _userManager.DeleteAsync(user);
+    }
+
     //teste de atribuição de claims a um usuário
     //public async Task AplicarRoleAdmin (string email)
     //{

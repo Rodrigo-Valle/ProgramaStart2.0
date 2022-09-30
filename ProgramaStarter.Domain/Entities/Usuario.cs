@@ -14,16 +14,12 @@ public class Usuario : EntidadeBase
     public string Identity { get; private set; }
     public virtual Grupo Grupo { get; set; }
 
-
-    public void setIdentity(string identity) {
-        this.Identity = identity;
-    }
-
-    public Usuario(string nome, string letras, string email)
+    public Usuario(string nome, string letras, string email, string identity)
     {
         Nome = nome;
         Letras = letras;
         Email = email;
+        Identity = identity;
     }
 
     public Usuario(int id, string nome, string letras, string email, string identity)
