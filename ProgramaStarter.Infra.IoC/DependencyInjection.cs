@@ -1,12 +1,15 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using ProgramaStarter.Application.Interfaces;
 using ProgramaStarter.Application.Mappings;
 using ProgramaStarter.Application.Services;
+using ProgramaStarter.Domain.Account;
 using ProgramaStarter.Domain.Entities;
 using ProgramaStarter.Domain.Interfaces;
 using ProgramaStarter.Infra.Data.Context;
+using ProgramaStarter.Infra.Data.Identity;
 using ProgramaStarter.Infra.Data.Repositories;
 
 namespace ProgramaStarter.Infra.IoC;
@@ -20,14 +23,21 @@ public static class DependencyInjection
              options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"
             ), b => b.MigrationsAssembly(typeof(ApplicationDbContext).Assembly.FullName)));
 
+        services.AddIdentity<ApplicationUser,IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
 
         services.AddScoped<IRepository<ProgramaStart>, ProgramaStartRepository>();
         services.AddScoped<IRepository<Modulo>, ModuloRepository>();
         services.AddScoped<IRepository<Tecnologia>, TecnologiaRepository>();
+        services.AddScoped<IRepository<Usuario>, UsuarioRepository>();
 
         services.AddScoped<IProgramaStartService, ProgramaStartService>();
         services.AddScoped<IModuloService, ModuloService>();
         services.AddScoped<ITecnologiaService, TecnologiaService>();
+        services.AddScoped<IUsuarioService, UsuarioService>();
+
+        services.AddScoped<IAuthenticate, AuthenticateService>();
 
         services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
 

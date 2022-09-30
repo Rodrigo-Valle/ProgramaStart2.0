@@ -11,6 +11,7 @@ internal class UsuarioConfiguration : IEntityTypeConfiguration<Usuario>
         builder.HasKey(u => u.Id);
         builder.Property(u => u.Letras).HasMaxLength(4).IsRequired();
         builder.Property(u => u.Nome).HasMaxLength(100).IsRequired();
+        builder.Property(u => u.Email).HasMaxLength(100).IsRequired();
         builder.Property(u => u.Identity).HasMaxLength(40).IsRequired();
     }
 }

@@ -11,6 +11,7 @@ namespace ProgramaStarter.Application.Mappings
             CreateMap<ProgramaStart, ProgramaStartDTO>().ReverseMap();
             CreateMap<Modulo, ModuloDTO>().ReverseMap();
             CreateMap<Tecnologia, TecnologiaDTO>().ReverseMap();
+            CreateMap<Usuario, UsuarioDTO>().ReverseMap();
         }
     }
 }

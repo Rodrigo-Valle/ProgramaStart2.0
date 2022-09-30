@@ -32,7 +32,7 @@
 
             <ul class="list-unstyled components" id="menu">
                 <li>
-                    <a href="#">
+                    <a asp-controller="Home" asp-action="Index">
                         <i class="fas fa-home"></i>
                         Home
                     </a>
@@ -56,14 +56,14 @@
                     <a class="dropdown-toggle" data-bs-toggle="collapse" href="#scrumSubmenu" role="button"
                         aria-expanded="false" aria-controls="scrumSubmenu">
                         <i class="fas fa-user"></i>
-                        Scrum Masters
+                        Usuarios
                     </a>
                     <ul class="collapse list-unstyled" id="scrumSubmenu" data-parent="menu">
                         <li>
-                            <a href="#">Consultar</a>
+                            <a asp-controller="Usuario" asp-action="Index">Consultar</a>
                         </li>
                         <li>
-                            <a href="#">Cadastrar</a>
+                            <a asp-controller="Usuario" asp-action="Create">Cadastrar</a>
                         </li>
                     </ul>
                 </li>

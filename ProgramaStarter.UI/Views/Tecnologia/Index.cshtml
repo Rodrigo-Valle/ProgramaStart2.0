@@ -21,6 +21,7 @@
         <tr class="table-light">
             <th>Id</th>
             <th>Nome</th>
+            <th>Descricao</th>
             <th></th>
         </tr>
     </thead>
@@ -31,6 +32,7 @@
                 <td class="align-middle">@tecnologia.Id</td>
                 <td class="align-middle">@tecnologia.Nome</td>
                 <td class="align-middle">@tecnologia.Descricao</td>
+
                 <td class="align-middle">
                     <button class="btn btn-secondary btn-sm"><a asp-action="Edit" asp-route-id="@tecnologia.Id" title="Edit">
                             <i title="Register New" class="fa-regular fa-pen-to-square"></i> Editar</a>
@@ -42,5 +44,4 @@
             </tr>
         }
     </tbody>
-
 </table>

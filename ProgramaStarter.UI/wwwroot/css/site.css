@@ -13,6 +13,10 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
+form label {
+  margin-left: 10px;
+}
+
 #grid {
   display: grid;
   grid-template-columns: 20% 80%;

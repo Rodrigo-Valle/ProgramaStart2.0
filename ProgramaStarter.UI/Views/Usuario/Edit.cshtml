@@ -1,0 +1,36 @@
+@* @model ProgramaStarter.Application.DTO.UsuarioDTO
+
+<form asp-controller="Colaboradores" asp-action="Atualiar" method="POST">
+    <input type="hidden" asp-for="Id">
+    <input type="hidden" asp-for="Senha">
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label asp-for="Nome">Nome</label>
+            <input type="text" asp-for="Nome" class="form-control" placeholder="Nome">
+            <span asp-validation-for="Nome" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label asp-for="Letras">Letras</label>
+            <input type="text" asp-for="Letras" class="form-control">
+            <span asp-validation-for="Letras" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label asp-for="Email">Email</label>
+            <input type="text" asp-for="Email" class="form-control" placeholder="Nome">
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Confirmar</button>
+</form>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+} *@
