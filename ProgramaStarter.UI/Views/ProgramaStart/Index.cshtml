@@ -30,16 +30,19 @@
         @foreach (var programa in Model)
         {
             <tr>
-                <td>@programa.Id</td>
-                <td>@programa.Nome</td>
-                <td>@programa.DataInicio.ToString("dd/MM/yyyy")</td>
-                <td>@programa.DataFim.ToString("dd/MM/yyyy")</td>
+                <td class="align-middle">@programa.Id</td>
+                <td class="align-middle">@programa.Nome</td>
+                <td class="align-middle">@programa.DataInicio.ToString("dd/MM/yyyy")</td>
+                <td class="align-middle">@programa.DataFim.ToString("dd/MM/yyyy")</td>
 
-                <td>
-                    <button class="btn btn-secondary"><a asp-action="Edit" asp-route-id="@programa.Id"
-                        title="Edit">Editar</a></button>
-                    <button class="btn btn-danger"><a asp-action="Delete" asp-route-id="@programa.Id"
-                        title="Delete">Excluir</a></button>
+                <td class="align-middle">
+                    <button class="btn btn-secondary btn-sm">
+                        <a asp-action="Edit" asp-route-id="@programa.Id" title="Edit">
+                            <i class="fa-regular fa-pen-to-square"></i> Editar</a>
+                    </button>
+                    <button class="btn btn-danger btn-sm"><a asp-action="Delete" asp-route-id="@programa.Id" title="Delete">
+                            <i class="fa-regular fa-trash-can"></i> Excluir</a>
+                    </button>
                 </td>
             </tr>
         }

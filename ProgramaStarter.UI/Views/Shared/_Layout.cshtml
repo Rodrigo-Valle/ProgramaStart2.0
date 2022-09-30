@@ -103,7 +103,7 @@
                 <li>
                     <a class="dropdown-toggle" data-bs-toggle="collapse" href="#moduloSubmenu" role="button"
                         aria-expanded="false" aria-controls="moduloSubmenu">
-                        <i class="fa-regular fa-calendar"></i>
+                        <i class="fa-solid fa-calendar"></i>
                         Modulos
                     </a>
                     <ul class="collapse list-unstyled" id="moduloSubmenu" data-parent="menu">
@@ -116,10 +116,19 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="#">
+                    <a class="dropdown-toggle" data-bs-toggle="collapse" href="#tecnologiaSubmenu" role="button"
+                        aria-expanded="false" aria-controls="tecnologiaSubmenu">
                         <i class="fa-solid fa-code"></i>
                         Tecnologias
                     </a>
+                    <ul class="collapse list-unstyled" id="tecnologiaSubmenu" data-parent="menu">
+                        <li>
+                            <a asp-controller="Tecnologia" asp-action="Index">Consultar</a>
+                        </li>
+                        <li>
+                            <a asp-controller="Tecnologia" asp-action="Create">Cadastrar</a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </div>

@@ -23,9 +23,11 @@ public static class DependencyInjection
 
         services.AddScoped<IRepository<ProgramaStart>, ProgramaStartRepository>();
         services.AddScoped<IRepository<Modulo>, ModuloRepository>();
+        services.AddScoped<IRepository<Tecnologia>, TecnologiaRepository>();
 
         services.AddScoped<IProgramaStartService, ProgramaStartService>();
         services.AddScoped<IModuloService, ModuloService>();
+        services.AddScoped<ITecnologiaService, TecnologiaService>();
 
         services.AddAutoMapper(typeof(DomainToDTOMappingProfile));
 

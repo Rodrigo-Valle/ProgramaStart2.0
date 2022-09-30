@@ -1,0 +1,28 @@
+@model ProgramaStarter.Application.DTO.TecnologiaDTO
+
+<form asp-controller="Tecnologia" asp-action="Edit" method="POST">
+  <input type="hidden" asp-for="Id">
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label asp-for="Nome">Nome</label>
+      <input type="text" asp-for="Nome" class="form-control" placeholder="Nome">
+      <span asp-validation-for="Nome" class="text-danger"></span>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label asp-for="Descricao">Descricao</label>
+      <input type="text" asp-for="Descricao" class="form-control" placeholder="Descricao">
+      <span asp-validation-for="Descricao" class="text-danger"></span>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Confirmar</button>
+  <button class="btn btn-outline-secondary"><a asp-action="Index">Retornar</a></button>
+</form>
+
+@section Scripts {
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

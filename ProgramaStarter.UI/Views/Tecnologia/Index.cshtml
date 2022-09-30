@@ -1,6 +1,6 @@
-@model IEnumerable<ProgramaStarter.Application.DTO.ModuloDTO>
+@model IEnumerable<ProgramaStarter.Application.DTO.TecnologiaDTO>
 
-<h1>Modulos</h1>
+<h1>Tecnologias</h1>
 
 <hr />
 <div class="row">
@@ -8,7 +8,7 @@
         <div>
             <div class="pull-left">
                 <a asp-action="Create" class="btn btn-primary">
-                    <i title="Register New" class="fa-regular fa-plus"></i> Novo Modulo
+                    <i title="Register New" class="fa-regular fa-plus"></i> Nova Tecnologia
                 </a>
             </div>
         </div>
@@ -16,7 +16,7 @@
 </div>
 <br />
 
-<table id="modulos" class="table table-sm table-hover table-striped table-borderless">
+<table id="tecnologias" class="table table-sm table-hover table-striped table-borderless">
     <thead>
         <tr class="table-light">
             <th>Id</th>
@@ -25,16 +25,17 @@
         </tr>
     </thead>
     <tbody>
-        @foreach (var modulo in Model)
+        @foreach (var tecnologia in Model)
         {
             <tr>
-                <td class="align-middle">@modulo.Id</td>
-                <td class="align-middle">@modulo.Nome</td>
+                <td class="align-middle">@tecnologia.Id</td>
+                <td class="align-middle">@tecnologia.Nome</td>
+                <td class="align-middle">@tecnologia.Descricao</td>
                 <td class="align-middle">
-                    <button class="btn btn-secondary btn-sm"><a asp-action="Edit" asp-route-id="@modulo.Id" title="Edit">
+                    <button class="btn btn-secondary btn-sm"><a asp-action="Edit" asp-route-id="@tecnologia.Id" title="Edit">
                             <i title="Register New" class="fa-regular fa-pen-to-square"></i> Editar</a>
                     </button>
-                    <button class="btn btn-danger btn-sm"><a asp-action="Delete" asp-route-id="@modulo.Id" title="Delete">
+                    <button class="btn btn-danger btn-sm"><a asp-action="Delete" asp-route-id="@tecnologia.Id" title="Delete">
                             <i class="fa-regular fa-trash-can"></i> Excluir</a>
                     </button>
                 </td>
