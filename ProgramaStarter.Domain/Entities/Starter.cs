@@ -13,7 +13,7 @@ public class Starter : EntidadeBase
     public int? GrupoId { get; set; }
     public virtual Grupo Grupo { get;  set; }
     public ICollection<Daily> Daylies { get; set; }
-    public ICollection<ProjetoStarter> ProjetoStarter { get; set; }
+    public ICollection<Avaliacao> Avaliacoes { get; set; }
 
     public Starter(string nome, string letras)
     {

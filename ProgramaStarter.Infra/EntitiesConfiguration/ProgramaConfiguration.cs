@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace ProgramaStarter.Infra.Data.EntitiesConfiguration;
 
-internal class ProgramaStartConfiguration : IEntityTypeConfiguration<ProgramaStart>
+internal class ProgramaConfiguration : IEntityTypeConfiguration<Programa>
 {
-    public void Configure(EntityTypeBuilder<ProgramaStart> builder)
+    public void Configure(EntityTypeBuilder<Programa> builder)
     {
         builder.HasKey(p => p.Id);
         builder.Property(p => p.Nome).HasMaxLength(100).IsRequired();

@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace ProgramaStarter.Infra.Data.Migrations
 {
-    public partial class firstMigration : Migration
+    public partial class createdatabase : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -62,7 +62,7 @@ namespace ProgramaStarter.Infra.Data.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "ProgramasStarter",
+                name: "Programas",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -73,7 +73,7 @@ namespace ProgramaStarter.Infra.Data.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_ProgramasStarter", x => x.Id);
+                    table.PrimaryKey("PK_Programas", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -98,6 +98,7 @@ namespace ProgramaStarter.Infra.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nome = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Letras = table.Column<string>(type: "nvarchar(4)", maxLength: 4, nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Identity = table.Column<string>(type: "nvarchar(40)", maxLength: 40, nullable: false)
                 },
                 constraints: table =>
@@ -238,21 +239,21 @@ namespace ProgramaStarter.Infra.Data.Migrations
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     TecnologiaId = table.Column<int>(type: "int", nullable: false),
-                    ProgramaStartId = table.Column<int>(type: "int", nullable: false),
+                    ProgramaId = table.Column<int>(type: "int", nullable: false),
                     ScrumMasterId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Grupos", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Grupos_ProgramasStarter_ProgramaStartId",
-                        column: x => x.ProgramaStartId,
-                        principalTable: "ProgramasStarter",
+                        name: "FK_Grupos_Programas_ProgramaId",
+                        column: x => x.ProgramaId,
+                        principalTable: "Programas",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_Grupos_Tecnologias_ProgramaStartId",
-                        column: x => x.ProgramaStartId,
+                        name: "FK_Grupos_Tecnologias_ProgramaId",
+                        column: x => x.ProgramaId,
                         principalTable: "Tecnologias",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
@@ -272,7 +273,7 @@ namespace ProgramaStarter.Infra.Data.Migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Nome = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
                     Letras = table.Column<string>(type: "nvarchar(4)", maxLength: 4, nullable: false),
-                    GrupoId = table.Column<int>(type: "int", nullable: false)
+                    GrupoId = table.Column<int>(type: "int", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -281,6 +282,32 @@ namespace ProgramaStarter.Infra.Data.Migrations
                         name: "FK_Starters_Grupos_GrupoId",
                         column: x => x.GrupoId,
                         principalTable: "Grupos",
+                        principalColumn: "Id");
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Avaliacoes",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Nota = table.Column<double>(type: "float(2)", precision: 2, scale: 2, nullable: false),
+                    StarterId = table.Column<int>(type: "int", nullable: false),
+                    ProjetoId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Avaliacoes", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Avaliacoes_Projetos_ProjetoId",
+                        column: x => x.ProjetoId,
+                        principalTable: "Projetos",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Avaliacoes_Starters_StarterId",
+                        column: x => x.StarterId,
+                        principalTable: "Starters",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -310,33 +337,6 @@ namespace ProgramaStarter.Infra.Data.Migrations
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_Dailys_Starters_StarterId",
-                        column: x => x.StarterId,
-                        principalTable: "Starters",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "ProjetosStarters",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    Avaliacao = table.Column<double>(type: "float(2)", precision: 2, scale: 2, nullable: false),
-                    StarterId = table.Column<int>(type: "int", nullable: false),
-                    ProjetoId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_ProjetosStarters", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_ProjetosStarters_Projetos_ProjetoId",
-                        column: x => x.ProjetoId,
-                        principalTable: "Projetos",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_ProjetosStarters_Starters_StarterId",
                         column: x => x.StarterId,
                         principalTable: "Starters",
                         principalColumn: "Id",
@@ -383,6 +383,16 @@ namespace ProgramaStarter.Infra.Data.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Avaliacoes_ProjetoId",
+                table: "Avaliacoes",
+                column: "ProjetoId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Avaliacoes_StarterId",
+                table: "Avaliacoes",
+                column: "StarterId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Dailys_ModuloId",
                 table: "Dailys",
                 column: "ModuloId");
@@ -393,9 +403,9 @@ namespace ProgramaStarter.Infra.Data.Migrations
                 column: "StarterId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Grupos_ProgramaStartId",
+                name: "IX_Grupos_ProgramaId",
                 table: "Grupos",
-                column: "ProgramaStartId");
+                column: "ProgramaId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Grupos_ScrumMasterId",
@@ -407,16 +417,6 @@ namespace ProgramaStarter.Infra.Data.Migrations
                 name: "IX_Projetos_ModuloId",
                 table: "Projetos",
                 column: "ModuloId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ProjetosStarters_ProjetoId",
-                table: "ProjetosStarters",
-                column: "ProjetoId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ProjetosStarters_StarterId",
-                table: "ProjetosStarters",
-                column: "StarterId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Starters_GrupoId",
@@ -442,10 +442,10 @@ namespace ProgramaStarter.Infra.Data.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Dailys");
+                name: "Avaliacoes");
 
             migrationBuilder.DropTable(
-                name: "ProjetosStarters");
+                name: "Dailys");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -466,7 +466,7 @@ namespace ProgramaStarter.Infra.Data.Migrations
                 name: "Grupos");
 
             migrationBuilder.DropTable(
-                name: "ProgramasStarter");
+                name: "Programas");
 
             migrationBuilder.DropTable(
                 name: "Tecnologias");

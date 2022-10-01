@@ -15,10 +15,10 @@ internal class GrupoConfiguration : IEntityTypeConfiguration<Grupo>
     {
         builder.HasKey(g => g.Id);
 
-        builder.HasOne(g => g.ProgramaStart).WithMany(p => p.Grupos)
-                .HasForeignKey(g => g.ProgramaStartId);
+        builder.HasOne(g => g.Programa).WithMany(p => p.Grupos)
+                .HasForeignKey(g => g.ProgramaId);
         builder.HasOne(g => g.Tecnologia).WithMany(t => t.Grupos)
-                .HasForeignKey(g => g.ProgramaStartId);
+                .HasForeignKey(g => g.ProgramaId);
 
         builder.HasOne(g => g.ScrumMaster).WithOne(u => u.Grupo);
                 

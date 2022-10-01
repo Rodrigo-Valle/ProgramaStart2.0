@@ -1,22 +1,22 @@
 namespace ProgramaStarter.Domain.Entities;
 
-public class ProjetoStarter : EntidadeBase
+public class Avaliacao : EntidadeBase
 {
-    public double Avaliacao { get; private set; }
+    public double Nota { get; private set; }
     public int StarterId { get; set; }
     public virtual Starter Starter { get; set; }
     public int ProjetoId { get; set; }
     public virtual Projeto Projeto { get; set; }
 
 
-    public ProjetoStarter(double avaliacao)
+    public Avaliacao(double nota)
     {
-        Avaliacao = avaliacao;
+        Nota = nota;
     }
 
-    public ProjetoStarter(int id, double avaliacao)
+    public Avaliacao(int id, double nota)
     {
-        Avaliacao = avaliacao;
+        Nota = nota;
         Id = id;
     }
 }

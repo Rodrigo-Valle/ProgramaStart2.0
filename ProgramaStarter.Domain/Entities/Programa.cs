@@ -1,7 +1,7 @@
 
 namespace ProgramaStarter.Domain.Entities;
 
-public class ProgramaStart : EntidadeBase
+public class Programa : EntidadeBase
 {
     public string Nome { get; private set; }
     public DateTime DataInicio { get; private set; }
@@ -9,13 +9,13 @@ public class ProgramaStart : EntidadeBase
 
     public ICollection<Grupo> Grupos { get; set; }
 
-    public ProgramaStart(string nome, DateTime dataInicio, DateTime dataFim)
+    public Programa(string nome, DateTime dataInicio, DateTime dataFim)
     {
         Nome = nome;
         DataInicio = dataInicio;
         DataFim = dataFim;
     }
-    public ProgramaStart(int id, string nome, DateTime dataInicio, DateTime dataFim)
+    public Programa(int id, string nome, DateTime dataInicio, DateTime dataFim)
     {
         Nome = nome;
         DataInicio = dataInicio;

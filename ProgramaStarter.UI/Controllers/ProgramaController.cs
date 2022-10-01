@@ -10,17 +10,17 @@ using ProgramaStarter.Application.Interfaces;
 
 namespace ProgramaStarter.UI.Controllers
 {
-    public class ProgramaStartController : Controller
+    public class ProgramaController : Controller
     {
-        private readonly IProgramaStartService _programaStartService;
-        public ProgramaStartController(IProgramaStartService programaStartService)
+        private readonly IProgramaService _programaService;
+        public ProgramaController(IProgramaService programaService)
         {
-            _programaStartService = programaStartService;
+            _programaService = programaService;
         }
 
         public async Task<IActionResult> Index()
         {
-            var programas = await _programaStartService.GetAsync();
+            var programas = await _programaService.GetAsync();
             return View(programas);
         }
 
@@ -31,11 +31,11 @@ namespace ProgramaStarter.UI.Controllers
         }
 
         [HttpPost()]
-        public async Task<IActionResult> Create(ProgramaStartDTO programa)
+        public async Task<IActionResult> Create(ProgramaDTO programa)
         {
             if (ModelState.IsValid)
             {
-                await _programaStartService.AddAsync(programa);
+                await _programaService.AddAsync(programa);
                 return RedirectToAction(nameof(Index));
             }
             return View(programa);
@@ -45,19 +45,19 @@ namespace ProgramaStarter.UI.Controllers
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null) return NotFound();
-            var programaStartDTO = await _programaStartService.GetByIdAsync(id);
-            if (programaStartDTO == null) return NotFound();
-            return View(programaStartDTO);
+            var programaDTO = await _programaService.GetByIdAsync(id);
+            if (programaDTO == null) return NotFound();
+            return View(programaDTO);
         }
 
         [HttpPost()]
-        public async Task<IActionResult> Edit(ProgramaStartDTO programaStartDTO)
+        public async Task<IActionResult> Edit(ProgramaDTO programaDTO)
         {
             if (ModelState.IsValid)
             {
                 try
                 {
-                    await _programaStartService.UpdateAsync(programaStartDTO);
+                    await _programaService.UpdateAsync(programaDTO);
                 }
                 catch (Exception)
                 {
@@ -65,7 +65,7 @@ namespace ProgramaStarter.UI.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(programaStartDTO);
+            return View(programaDTO);
         }
 
         [HttpGet()]
@@ -74,17 +74,17 @@ namespace ProgramaStarter.UI.Controllers
             if (id == null)
                 return NotFound();
 
-            var programaStartDTO = await _programaStartService.GetByIdAsync(id);
+            var programaDTO = await _programaService.GetByIdAsync(id);
 
-            if (programaStartDTO == null) return NotFound();
+            if (programaDTO == null) return NotFound();
 
-            return View(programaStartDTO);
+            return View(programaDTO);
         }
 
         [HttpPost(), ActionName("Delete")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            await _programaStartService.RemoveAsync(id);
+            await _programaService.RemoveAsync(id);
             return RedirectToAction("Index");
         }
     }

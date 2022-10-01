@@ -6,8 +6,8 @@ public class Grupo : EntidadeBase
 {
     public int TecnologiaId { get; set; }
     public Tecnologia Tecnologia { get; set; }
-    public int ProgramaStartId { get; set; }
-    public ProgramaStart ProgramaStart { get; set; }
+    public int ProgramaId { get; set; }
+    public Programa Programa { get; set; }
     public int ScrumMasterId { get; set; }
     public virtual Usuario ScrumMaster { get; set; }
     public ICollection<Starter> Starters { get; set; }

@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 
 namespace ProgramaStarter.Application.DTO;
-public class ProgramaStartDTO
+public class ProgramaDTO
 
 {
     public int Id { get; set; }

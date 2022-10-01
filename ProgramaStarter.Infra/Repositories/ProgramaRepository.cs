@@ -5,40 +5,40 @@ using Microsoft.EntityFrameworkCore;
 
 namespace ProgramaStarter.Infra.Data.Repositories;
 
-public class ProgramaStartRepository : IRepository<ProgramaStart>
+public class ProgramaRepository : IRepository<Programa>
 {
     private ApplicationDbContext _context;
-    public ProgramaStartRepository(ApplicationDbContext context)
+    public ProgramaRepository(ApplicationDbContext context)
         {
             _context = context;
         }
-    public async Task<ProgramaStart> CreateAsync(ProgramaStart programa)
+    public async Task<Programa> CreateAsync(Programa programa)
     {
         _context.Add(programa);
         await _context.SaveChangesAsync();
         return programa;
     }
 
-    public async Task<ProgramaStart> GetByIdAsync(int? id)
+    public async Task<Programa> GetByIdAsync(int? id)
     {
-        var programa = await _context.ProgramasStarter.FindAsync(id);
+        var programa = await _context.Programas.FindAsync(id);
         return programa;
     }
 
-    public async Task<IEnumerable<ProgramaStart>> GetListAsync()
+    public async Task<IEnumerable<Programa>> GetListAsync()
     {
-        var programas = await _context.ProgramasStarter.ToListAsync();
+        var programas = await _context.Programas.ToListAsync();
         return programas;
     }
 
-    public async Task<ProgramaStart> RemoveAsync(ProgramaStart programa)
+    public async Task<Programa> RemoveAsync(Programa programa)
     {
         _context.Remove(programa);
         await _context.SaveChangesAsync();
         return programa;
     }
 
-    public async Task<ProgramaStart> UpdateAsync(ProgramaStart programa)
+    public async Task<Programa> UpdateAsync(Programa programa)
     {
         _context.Update(programa);
         await _context.SaveChangesAsync();

@@ -8,7 +8,7 @@ public class Projeto : EntidadeBase
 
     public int ModuloId { get; set; }
     public Modulo Modulo { get; set; }
-    public ICollection<ProjetoStarter> ProjetoStarter { get; set; } 
+    public ICollection<Avaliacao> Avaliacoes { get; set; } 
 
 
     public Projeto(string etapa)

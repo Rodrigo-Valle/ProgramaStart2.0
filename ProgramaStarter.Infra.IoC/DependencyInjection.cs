@@ -27,14 +27,14 @@ public static class DependencyInjection
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
-        services.AddScoped<IRepository<ProgramaStart>, ProgramaStartRepository>();
+        services.AddScoped<IRepository<Programa>, ProgramaRepository>();
         services.AddScoped<IRepository<Modulo>, ModuloRepository>();
         services.AddScoped<IRepository<Tecnologia>, TecnologiaRepository>();
         services.AddScoped<IRepository<Usuario>, UsuarioRepository>();
         services.AddScoped<IRepository<Projeto>, ProjetoRepository>();
         services.AddScoped<IRepository<Starter>, StarterRepository>();
 
-        services.AddScoped<IProgramaStartService, ProgramaStartService>();
+        services.AddScoped<IProgramaService, ProgramaService>();
         services.AddScoped<IModuloService, ModuloService>();
         services.AddScoped<ITecnologiaService, TecnologiaService>();
         services.AddScoped<IUsuarioService, UsuarioService>();

@@ -155,6 +155,33 @@ namespace ProgramaStarter.Infra.Data.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("ProgramaStarter.Domain.Entities.Avaliacao", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
+
+                    b.Property<double>("Nota")
+                        .HasPrecision(2, 2)
+                        .HasColumnType("float(2)");
+
+                    b.Property<int>("ProjetoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("StarterId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProjetoId");
+
+                    b.HasIndex("StarterId");
+
+                    b.ToTable("Avaliacoes");
+                });
+
             modelBuilder.Entity("ProgramaStarter.Domain.Entities.Daily", b =>
                 {
                     b.Property<int>("Id")
@@ -204,7 +231,7 @@ namespace ProgramaStarter.Infra.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("ProgramaStartId")
+                    b.Property<int>("ProgramaId")
                         .HasColumnType("int");
 
                     b.Property<int>("ScrumMasterId")
@@ -215,7 +242,7 @@ namespace ProgramaStarter.Infra.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ProgramaStartId");
+                    b.HasIndex("ProgramaId");
 
                     b.HasIndex("ScrumMasterId")
                         .IsUnique();
@@ -241,7 +268,7 @@ namespace ProgramaStarter.Infra.Data.Migrations
                     b.ToTable("Modulos");
                 });
 
-            modelBuilder.Entity("ProgramaStarter.Domain.Entities.ProgramaStart", b =>
+            modelBuilder.Entity("ProgramaStarter.Domain.Entities.Programa", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -262,7 +289,7 @@ namespace ProgramaStarter.Infra.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("ProgramasStarter");
+                    b.ToTable("Programas");
                 });
 
             modelBuilder.Entity("ProgramaStarter.Domain.Entities.Projeto", b =>
@@ -286,33 +313,6 @@ namespace ProgramaStarter.Infra.Data.Migrations
                     b.HasIndex("ModuloId");
 
                     b.ToTable("Projetos");
-                });
-
-            modelBuilder.Entity("ProgramaStarter.Domain.Entities.ProjetoStarter", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
-
-                    b.Property<double>("Avaliacao")
-                        .HasPrecision(2, 2)
-                        .HasColumnType("float(2)");
-
-                    b.Property<int>("ProjetoId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("StarterId")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ProjetoId");
-
-                    b.HasIndex("StarterId");
-
-                    b.ToTable("ProjetosStarters");
                 });
 
             modelBuilder.Entity("ProgramaStarter.Domain.Entities.Starter", b =>
@@ -515,6 +515,25 @@ namespace ProgramaStarter.Infra.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("ProgramaStarter.Domain.Entities.Avaliacao", b =>
+                {
+                    b.HasOne("ProgramaStarter.Domain.Entities.Projeto", "Projeto")
+                        .WithMany("Avaliacoes")
+                        .HasForeignKey("ProjetoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("ProgramaStarter.Domain.Entities.Starter", "Starter")
+                        .WithMany("Avaliacoes")
+                        .HasForeignKey("StarterId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Projeto");
+
+                    b.Navigation("Starter");
+                });
+
             modelBuilder.Entity("ProgramaStarter.Domain.Entities.Daily", b =>
                 {
                     b.HasOne("ProgramaStarter.Domain.Entities.Modulo", "Modulo")
@@ -536,15 +555,15 @@ namespace ProgramaStarter.Infra.Data.Migrations
 
             modelBuilder.Entity("ProgramaStarter.Domain.Entities.Grupo", b =>
                 {
-                    b.HasOne("ProgramaStarter.Domain.Entities.ProgramaStart", "ProgramaStart")
+                    b.HasOne("ProgramaStarter.Domain.Entities.Programa", "Programa")
                         .WithMany("Grupos")
-                        .HasForeignKey("ProgramaStartId")
+                        .HasForeignKey("ProgramaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("ProgramaStarter.Domain.Entities.Tecnologia", "Tecnologia")
                         .WithMany("Grupos")
-                        .HasForeignKey("ProgramaStartId")
+                        .HasForeignKey("ProgramaId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -554,7 +573,7 @@ namespace ProgramaStarter.Infra.Data.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("ProgramaStart");
+                    b.Navigation("Programa");
 
                     b.Navigation("ScrumMaster");
 
@@ -570,25 +589,6 @@ namespace ProgramaStarter.Infra.Data.Migrations
                         .IsRequired();
 
                     b.Navigation("Modulo");
-                });
-
-            modelBuilder.Entity("ProgramaStarter.Domain.Entities.ProjetoStarter", b =>
-                {
-                    b.HasOne("ProgramaStarter.Domain.Entities.Projeto", "Projeto")
-                        .WithMany("ProjetoStarter")
-                        .HasForeignKey("ProjetoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ProgramaStarter.Domain.Entities.Starter", "Starter")
-                        .WithMany("ProjetoStarter")
-                        .HasForeignKey("StarterId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Projeto");
-
-                    b.Navigation("Starter");
                 });
 
             modelBuilder.Entity("ProgramaStarter.Domain.Entities.Starter", b =>
@@ -612,21 +612,21 @@ namespace ProgramaStarter.Infra.Data.Migrations
                     b.Navigation("Projetos");
                 });
 
-            modelBuilder.Entity("ProgramaStarter.Domain.Entities.ProgramaStart", b =>
+            modelBuilder.Entity("ProgramaStarter.Domain.Entities.Programa", b =>
                 {
                     b.Navigation("Grupos");
                 });
 
             modelBuilder.Entity("ProgramaStarter.Domain.Entities.Projeto", b =>
                 {
-                    b.Navigation("ProjetoStarter");
+                    b.Navigation("Avaliacoes");
                 });
 
             modelBuilder.Entity("ProgramaStarter.Domain.Entities.Starter", b =>
                 {
-                    b.Navigation("Daylies");
+                    b.Navigation("Avaliacoes");
 
-                    b.Navigation("ProjetoStarter");
+                    b.Navigation("Daylies");
                 });
 
             modelBuilder.Entity("ProgramaStarter.Domain.Entities.Tecnologia", b =>
