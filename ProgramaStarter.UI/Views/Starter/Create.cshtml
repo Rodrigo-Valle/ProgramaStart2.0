@@ -1,0 +1,24 @@
+@model ProgramaStarter.Application.DTO.StarterDTO
+
+
+<form asp-controller="Starter" asp-action="Create" method="POST">
+    <div class="row">
+        <div class="form-floating col-md-6">
+            <input type="text" asp-for="Nome" class="form-control" placeholder="Nome">
+            <label class="form-label" asp-for="Nome">Nome</label>
+            <span asp-validation-for="Nome" class="text-danger"></span>
+        </div>
+        <div class="form-floating col-md-6">
+            <input type="text" asp-for="Letras" class="form-control" placeholder="Letras">
+            <label class="form-label" asp-for="Letras">Letras</label>
+            <span asp-validation-for="Letras" class="text-danger"></span>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Confirmar</button>
+    <button type="button" class="btn btn-outline-secondary"><a asp-action="Index">Retornar</a></button>
+</form>
+
+@section Scripts {
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

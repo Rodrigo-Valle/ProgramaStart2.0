@@ -13,6 +13,8 @@ namespace ProgramaStarter.Application.Mappings
             CreateMap<Tecnologia, TecnologiaDTO>().ReverseMap();
             CreateMap<Usuario, UsuarioDTO>().ReverseMap();
             CreateMap<Projeto, ProjetoDTO>().ReverseMap();
+            CreateMap<Starter, StarterDTO>().ReverseMap();
+
         }
     }
 }

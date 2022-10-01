@@ -1,0 +1,28 @@
+﻿@model ProgramaStarter.Application.DTO.StarterDTO
+
+<h3>Deletar Starter</h3>
+
+<h4>Tem certeza que deseja deletar este starter?</h4>
+<div>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Nome)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Nome)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Letras)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Letras)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" value="Delete" class="btn btn-danger" />
+        <button class="btn btn-outline-secondary"><a asp-action="Index">Retornar</a></button>
+    </form>
+</div>

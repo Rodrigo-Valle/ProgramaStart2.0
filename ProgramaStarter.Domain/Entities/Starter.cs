@@ -10,7 +10,7 @@ public class Starter : EntidadeBase
     public string Nome { get; private set; }
     public string Letras { get; private set; }
 
-    public int GrupoId { get; set; }
+    public int? GrupoId { get; set; }
     public virtual Grupo Grupo { get;  set; }
     public ICollection<Daily> Daylies { get; set; }
     public ICollection<ProjetoStarter> ProjetoStarter { get; set; }

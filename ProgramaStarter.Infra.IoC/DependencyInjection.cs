@@ -32,12 +32,14 @@ public static class DependencyInjection
         services.AddScoped<IRepository<Tecnologia>, TecnologiaRepository>();
         services.AddScoped<IRepository<Usuario>, UsuarioRepository>();
         services.AddScoped<IRepository<Projeto>, ProjetoRepository>();
+        services.AddScoped<IRepository<Starter>, StarterRepository>();
 
         services.AddScoped<IProgramaStartService, ProgramaStartService>();
         services.AddScoped<IModuloService, ModuloService>();
         services.AddScoped<ITecnologiaService, TecnologiaService>();
         services.AddScoped<IUsuarioService, UsuarioService>();
         services.AddScoped<IProjetoService, ProjetoService>();
+        services.AddScoped<IStarterService, StarterService>();
 
         services.AddScoped<IAuthenticate, AuthenticateService>();
 

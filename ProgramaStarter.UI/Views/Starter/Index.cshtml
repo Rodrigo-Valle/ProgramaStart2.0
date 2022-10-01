@@ -1,0 +1,49 @@
+@model IEnumerable<ProgramaStarter.Application.DTO.StarterDTO>
+
+<h1>Starter</h1>
+
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <div>
+            <div class="pull-left">
+                <a asp-action="Create" class="btn btn-primary">
+                    <i title="Register New" class="fas fa-plus"></i> Novo Starter
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+
+<table id="programas" class="table table-sm table-hover table-striped table-borderless">
+    <thead>
+        <tr class="table-light">
+            <th>Id</th>
+            <th>Nome</th>
+            <th>Letras</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var starter in Model)
+        {
+            <tr>
+                <td class="align-middle">@starter.Id</td>
+                <td class="align-middle">@starter.Nome</td>
+                <td class="align-middle">@starter.Letras</td>
+
+                <td class="align-middle">
+                    <button class="btn btn-secondary btn-sm">
+                        <a asp-action="Edit" asp-route-id="@starter.Id" title="Edit">
+                            <i class="fa-regular fa-pen-to-square"></i> Editar</a>
+                    </button>
+                    <button class="btn btn-danger btn-sm"><a asp-action="Delete" asp-route-id="@starter.Id" title="Delete">
+                            <i class="fa-regular fa-trash-can"></i> Excluir</a>
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
