@@ -103,7 +103,7 @@
                 <li>
                     <a class="dropdown-toggle" data-bs-toggle="collapse" href="#moduloSubmenu" role="button"
                         aria-expanded="false" aria-controls="moduloSubmenu">
-                        <i class="fa-solid fa-calendar"></i>
+                        <i class="fa-solid fa-diagram-project"></i>
                         Modulos
                     </a>
                     <ul class="collapse list-unstyled" id="moduloSubmenu" data-parent="menu">
@@ -127,6 +127,21 @@
                         </li>
                         <li>
                             <a asp-controller="Tecnologia" asp-action="Create">Cadastrar</a>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a class="dropdown-toggle" data-bs-toggle="collapse" href="#projetoSubmenu" role="button"
+                        aria-expanded="false" aria-controls="projetoSubmenu">
+                        <i class="fa-solid fa-flask"></i>
+                        Projetos
+                    </a>
+                    <ul class="collapse list-unstyled" id="projetoSubmenu" data-parent="menu">
+                        <li>
+                            <a asp-controller="Projeto" asp-action="Index">Consultar</a>
+                        </li>
+                        <li>
+                            <a asp-controller="Projeto" asp-action="Create">Cadastrar</a>
                         </li>
                     </ul>
                 </li>

@@ -1,0 +1,27 @@
+@model ProgramaStarter.Application.DTO.ProjetoDTO
+
+<form asp-controller="Projeto" asp-action="Edit" method="POST">
+  <input type="hidden" asp-for="Id">
+
+    <div class="row">
+        <div class="form-floating col-md-6">
+            <input type="text" asp-for="Etapa" class="form-control" placeholder="Etapa">
+            <label class="form-label" asp-for="Etapa">Etapa</label>
+            <span asp-validation-for="Etapa" class="text-danger"></span>
+        </div>
+        <div class="form-floating col-md-6">
+            <select class="form-control" asp-for="ModuloId" placeholder="Modulo"
+                asp-items="@ViewBag.ModuloId"></select>
+            <label class="form-label" asp-for="Modulo">Modulo</label>
+            <span asp-validation-for="Modulo" class="text-danger"></span>
+        </div>
+
+    </div>
+
+  <button type="submit" class="btn btn-primary">Confirmar</button>
+  <button type="button" class="btn btn-outline-secondary"><a asp-action="Index">Retornar</a></button>
+</form>
+
+@section Scripts {
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
