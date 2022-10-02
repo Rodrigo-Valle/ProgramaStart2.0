@@ -14,6 +14,7 @@ namespace ProgramaStarter.Application.Mappings
             CreateMap<Usuario, UsuarioDTO>().ReverseMap();
             CreateMap<Projeto, ProjetoDTO>().ReverseMap();
             CreateMap<Starter, StarterDTO>().ReverseMap();
+            CreateMap<Avaliacao, AvaliacaoDTO>().ReverseMap();
 
         }
     }

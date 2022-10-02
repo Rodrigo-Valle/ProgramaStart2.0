@@ -41,6 +41,9 @@
                     <button class="btn btn-danger btn-sm"><a asp-action="Delete" asp-route-id="@starter.Id" title="Delete">
                             <i class="fa-regular fa-trash-can"></i> Excluir</a>
                     </button>
+                    <button class="btn btn-primary btn-sm"><a asp-controller="Avaliacao" asp-action="Index" asp-route-starterId="@starter.Id" title="Delete">
+                            <i class="fa-solid fa-graduation-cap"></i> Avaliações</a>
+                    </button>
                 </td>
             </tr>
         }

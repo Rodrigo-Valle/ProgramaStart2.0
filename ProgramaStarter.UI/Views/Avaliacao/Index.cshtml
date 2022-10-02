@@ -1,0 +1,56 @@
+@model IEnumerable<ProgramaStarter.Application.DTO.AvaliacaoDTO>
+
+
+<h1>Avaliacoes de @ViewBag.Starter.Nome</h1>
+
+
+<hr />
+<div class="row">
+    <div class="col-md-12">
+        <div>
+            <a asp-action="Create" asp-route-starterId="@ViewBag.Starter.Id" class="btn btn-primary">
+                <i title="Register New" class="fa-regular fa-plus"></i> Nova Avaliacao
+            </a>
+            <a asp-controller="Starter" asp-action="Index" class="btn btn-outline-secondary">Retornar</a>
+        </div>
+        <div>
+            
+
+        </div>
+    </div>
+</div>
+<br />
+
+<table id="avaliacoes" class="table table-sm table-hover table-striped table-borderless">
+    <thead>
+        <tr class="table-light">
+            <th>Id</th>
+            <th>Nota</th>
+            <th>Modulo</th>
+            <th>Etapa</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var avaliacoes in Model)
+        {
+            <tr>
+                <td class="align-middle">@avaliacoes.Id</td>
+                <td class="align-middle">@avaliacoes.Nota</td>
+                <td class="align-middle">@avaliacoes.Projeto.Modulo.Nome</td>
+                <td class="align-middle">@avaliacoes.Projeto.Etapa</td>
+
+                <td class="align-middle">
+                    <button class="btn btn-secondary btn-sm"><a asp-action="Edit" asp-route-id="@avaliacoes.Id"
+                        title="Edit">
+                            <i title="Register New" class="fa-regular fa-pen-to-square"></i> Editar</a>
+                    </button>
+                    <button class="btn btn-danger btn-sm"><a asp-action="Delete" asp-route-id="@avaliacoes.Id"
+                        title="Delete">
+                            <i class="fa-regular fa-trash-can"></i> Excluir</a>
+                    </button>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

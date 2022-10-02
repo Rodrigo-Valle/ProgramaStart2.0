@@ -1,0 +1,31 @@
+@model ProgramaStarter.Application.DTO.AvaliacaoDTO
+
+<form asp-controller="Avaliacao" asp-action="Create" method="POST">
+    <input type="hidden" asp-for="StarterId" value="@ViewBag.StarterId">  
+
+    <div class="row">
+        <div class="form-floating col-md-1 col">
+            <input class="form-control" type="number" step="0.25" asp-for="Nota">
+            <label class="form-label" asp-for="Nota">Nota</label>
+            <span asp-validation-for="Nota" class="text-danger"></span>
+        </div>
+
+        <div class="form-floating col-md-6 col">
+            <select class="form-control" asp-for="ProjetoId"
+                asp-items="@ViewBag.ProjetoId"></select>
+            <label class="form-label" asp-for="ProjetoId">Projeto</label>
+            <span asp-validation-for="ProjetoId" class="text-danger"></span>
+        </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Confirmar</button>
+    <button type="button" class="btn btn-outline-secondary"><a asp-action="Index" asp-route-starterId="@ViewBag.StarterId">Retornar</a></button>
+</form>
+
+<div class="row">
+
+</div>
+
+@section Scripts {
+@{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

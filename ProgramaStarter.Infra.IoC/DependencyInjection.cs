@@ -33,6 +33,7 @@ public static class DependencyInjection
         services.AddScoped<IRepository<Usuario>, UsuarioRepository>();
         services.AddScoped<IRepository<Projeto>, ProjetoRepository>();
         services.AddScoped<IRepository<Starter>, StarterRepository>();
+        services.AddScoped<IAvaliacaoRepository, AvaliacaoRepository>();
 
         services.AddScoped<IProgramaService, ProgramaService>();
         services.AddScoped<IModuloService, ModuloService>();
@@ -40,6 +41,7 @@ public static class DependencyInjection
         services.AddScoped<IUsuarioService, UsuarioService>();
         services.AddScoped<IProjetoService, ProjetoService>();
         services.AddScoped<IStarterService, StarterService>();
+        services.AddScoped<IAvaliacaoService, AvaliacaoService>();
 
         services.AddScoped<IAuthenticate, AuthenticateService>();
 
